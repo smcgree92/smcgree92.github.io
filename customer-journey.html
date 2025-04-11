@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search First AI - Customer Journey</title>
+    <style>
+        /* Import fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Quattrocento&display=swap');
+        
+        /* Custom font for Celebri Sans Bold - you'll need to host this font or use a similar alternative */
+        @font-face {
+            font-family: 'Celebri Sans';
+            src: url('fonts/CelebriSans-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        /* Color variables */
+        :root {
+            --light-gray: #eae7e7;
+            --cream: #f9f8eb;
+            --teal: #155e63;
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quattrocento', serif;
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Celebri Sans', 'Arial', sans-serif;
+            font-weight: bold;
+            color: var(--teal);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--teal);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--cream);
+        }
+        
+        /* Page header */
+        .page-header {
+            background-color: var(--light-gray);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Content section */
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .content h2 {
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .content h3 {
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .content p {
+            margin-bottom: 1rem;
+        }
+        
+        .content ul, .content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Styled sections */
+        .plan-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .plan-section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        /* Journey steps */
+        .journey-timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 3rem;
+        }
+        
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            background-color: var(--teal);
+            border-radius: 4px;
+        }
+        
+        .journey-step {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+        }
+        
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: -3.55rem;
+            top: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--teal);
+            border: 4px solid white;
+        }
+        
+        .journey-step h3 {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+        
+        .journey-step p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Touchpoints */
+        .touchpoint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .touchpoint-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .touchpoint-card h3 {
+            margin-top: 0;
+            color: var(--teal);
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .journey-timeline {
+                padding-left: 2rem;
+            }
+            
+            .journey-step::before {
+                left: -2.55rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SearchFirstAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="startup-plan.html">Startup Plan</a></li>
+                <li><a href="ai-strategy.html">AI Strategy</a></li>
+                <li><a href="challenges.html">Challenges</a></li>
+                <li><a href="differentiation.html">Differentiation</a></li>
+                <li><a href="customer-journey.html">Customer Journey</a></li>
+                <li><a href="financial.html">Financial Analysis</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="prototype-plan.html">Prototype Plan</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Page header -->
+    <section class="page-header">
+        <h1>Customer Journey</h1>
+        <p>How property sellers and buyers experience Search First AI</p>
+    </section>
+    
+    <!-- Content section -->
+    <section class="content">
+        <div class="content-container">
+            <div class="plan-section">
+                <h2>Overview of Customer Experience</h2>
+                <p>Search First AI transforms the traditional conveyancing process by empowering customers with AI guidance and automation. Our platform eliminates delays, reduces dependencies on third parties, and provides unparalleled transparency throughout the property transaction process.</p>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Customer Journey Map</h2>
+                
+                <div class="journey-timeline">
+                    <div class="journey-step">
+                        <h3>1. Initial Engagement</h3>
+                        <ul>
+                            <li><strong>Decision Trigger:</strong> Customer decides to sell their property</li>
+                            <li><strong>Platform Discovery:</strong> Through online search, estate agent referral, or mortgage provider</li>
+                            <li><strong>Account Creation:</strong> Simple sign-up with identity verification (ID upload + selfie)</li>
+                            <li><strong>Property Input:</strong> Customer enters basic property details (address, property type, ownership status)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="journey-step">
+                        <h3>2. Automated Search Process</h3>
+                        <ul>
+                            <li><strong>Search Authorization:</strong> Customer authorizes Search First AI to conduct necessary searches</li>
+                            <li><strong>API Integration:</strong> System connects to Land Registry, local authorities, and environmental data sources</li>
+                            <li><strong>Real-Time Progress:</strong> Dashboard shows search progress and estimated completion times</li>
+                            <li><strong>Smart Validation:</strong> AI cross-references results from multiple sources to identify discrepancies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="journey-step">
+                        <h3>3. Property Status Assessment</h3>
+                        <ul>
+                            <li><strong>Leasehold/Freehold Analysis:</strong> AI analyzes title information via Land Registry API</li>
+                            <li><strong>Lease Document Processing:</strong> Automated extraction of critical lease terms</li>
+                            <li><strong>Title Verification:</strong> Cross-referencing ownership data across multiple official sources</li>
+                            <li><strong>Risk Assessment:</strong> Multi-factor analysis of search results and property data</li>
+                            <li><strong>Readiness Determination:</strong> AI confirms when all legal requirements are satisfied</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="journey-step">
+                        <h3>4. Marketing and Offer Stage</h3>
+                        <ul>
+                            <li><strong>Property Pack Generation:</strong> AI creates comprehensive legal pack for potential buyers</li>
+                            <li><strong>Offer Processing:</strong> System helps evaluate legal implications of different offers</li>
+                            <li><strong>Negotiation Support:</strong> AI provides legally-informed negotiation guidance</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="journey-step">
+                        <h3>5. Transaction Management</h3>
+                        <ul>
+                            <li><strong>Contract Generation:</strong> AI creates appropriate contracts based on property type</li>
+                            <li><strong>Digital Signatures:</strong> Secure e-signing of all required documents</li>
+                            <li><strong>Completion Coordination:</strong> AI manages completion logistics and funds transfer timing</li>
+                            <li><strong>Post-Completion:</strong> Automatic submission of SDLT returns and Land Registry updates</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="journey-step">
+                        <h3>6. Service Ecosystem Integration</h3>
+                        <ul>
+                            <li><strong>Mortgage Referrals:</strong> AI recommends suitable mortgage providers</li>
+                            <li><strong>Survey Arrangement:</strong> Coordination of property surveys based on property type</li>
+                            <li><strong>Insurance Recommendations:</strong> Suggestions for appropriate insurance products</li>
+                            <li><strong>Moving Services:</strong> Connections to removal companies and utility switching services</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>User Interface Touchpoints</h2>
+                
+                <div class="touchpoint-grid">
+                    <div class="touchpoint-card">
+                        <h3>Mobile-First Dashboard</h3>
+                        <p>Real-time status updates and action items accessible anywhere</p>
+                    </div>
+                    
+                    <div class="touchpoint-card">
+                        <h3>AI Assistant Chat</h3>
+                        <p>24/7 support and guidance through each step of the process</p>
+                    </div>
+                    
+                    <div class="touchpoint-card">
+                        <h3>Document Repository</h3>
+                        <p>Secure storage of all property-related documents</p>
+                    </div>
+                    
+                    <div class="touchpoint-card">
+                        <h3>Timeline Visualization</h3>
+                        <p>Clear display of progress, next steps, and estimated completion dates</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Key Differentiation Points in Customer Experience</h2>
+                
+                <h3>Customer Control</h3>
+                <p>Unlike traditional conveyancing where clients are passive participants, Search First AI empowers users to drive the process forward at their own pace. The platform puts customers in control while providing expert AI guidance every step of the way.</p>
+                
+                <h3>Transparency</h3>
+                <p>Traditional conveyancing is notoriously opaque, with clients often left wondering about progress. Our platform provides full visibility into process status and requirements at all times, eliminating the anxiety of uncertainty.</p>
+                
+                <h3>Proactive Guidance</h3>
+                <p>Rather than waiting for clients to ask questions, our AI anticipates next steps and potential obstacles, providing timely guidance before issues arise. This proactive approach prevents delays and streamlines the overall process.</p>
+                
+                <h3>Reduced Dependencies</h3>
+                <p>By automating searches and document processing, we minimize reliance on third-party availability, removing common bottlenecks in the conveyancing process. This dramatically reduces waiting times and accelerates completion.</p>
+                
+                <h3>Integrated Ecosystem</h3>
+                <p>Our platform creates seamless connections to complementary property services, creating a one-stop shop for the entire property transaction journey. This integration eliminates the hassle of coordinating multiple service providers separately.</p>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Customer Testimonials (Projected)</h2>
+                
+                <blockquote>
+                    <p>"I sold my flat in London and the entire process took just 5 weeks from listing to completion. The AI guided me through every step and I always knew exactly what was happening. No more chasing solicitors for updates!"</p>
+                    <cite>— Sarah, First-Time Seller</cite>
+                </blockquote>
+                
+                <blockquote>
+                    <p>"As a buy-to-let investor handling multiple properties, Search First AI has been a game-changer. I can manage all my transactions in one place, and the cost savings compared to traditional solicitors have been substantial."</p>
+                    <cite>— James, Property Investor</cite>
+                </blockquote>
+                
+                <blockquote>
+                    <p>"The mortgage and insurance recommendations saved me hours of research, and I ended up with better deals than I would have found on my own. The ecosystem approach really adds value beyond just handling the legal side."</p>
+                    <cite>— Emma, First-Time Buyer</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SearchFirstAI. All rights reserved.</p>
+    </footer>
+</body>
+</html>

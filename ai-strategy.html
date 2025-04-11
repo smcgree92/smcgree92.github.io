@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search First AI - AI Strategy</title>
+    <style>
+        /* Import fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Quattrocento&display=swap');
+        
+        /* Custom font for Celebri Sans Bold - you'll need to host this font or use a similar alternative */
+        @font-face {
+            font-family: 'Celebri Sans';
+            src: url('fonts/CelebriSans-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+        }
+        
+        /* Color variables */
+        :root {
+            --light-gray: #eae7e7;
+            --cream: #f9f8eb;
+            --teal: #155e63;
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quattrocento', serif;
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Celebri Sans', 'Arial', sans-serif;
+            font-weight: bold;
+            color: var(--teal);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--teal);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--cream);
+        }
+        
+        /* Page header */
+        .page-header {
+            background-color: var(--light-gray);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Content section */
+        .content {
+            padding: 3rem 2rem;
+        }
+        
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .content h2 {
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .content h3 {
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .content p {
+            margin-bottom: 1rem;
+        }
+        
+        .content ul, .content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Styled sections */
+        .plan-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .plan-section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        /* AI strategy specific styles */
+        .ai-component {
+            border-left: 4px solid var(--teal);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .ai-component h4 {
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-implementation {
+            background-color: rgba(21, 94, 99, 0.05);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+        
+        .ai-benefits {
+            margin-top: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SearchFirstAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="startup-plan.html">Startup Plan</a></li>
+                <li><a href="ai-strategy.html">AI Strategy</a></li>
+                <li><a href="challenges.html">Challenges</a></li>
+                <li><a href="differentiation.html">Differentiation</a></li>
+                <li><a href="customer-journey.html">Customer Journey</a></li>
+                <li><a href="financial.html">Financial Analysis</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="prototype-plan.html">Prototype Plan</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Page header -->
+    <section class="page-header">
+        <h1>AI Strategy</h1>
+        <p>Advanced technologies powering our conveyancing revolution</p>
+    </section>
+    
+    <!-- Content section -->
+    <section class="content">
+        <div class="content-container">
+            <div class="plan-section">
+                <h2>Our AI-First Approach</h2>
+                <p>Search First AI's competitive edge lies in our sophisticated AI implementation. We're not simply digitizing existing processes — we're fundamentally reimagining conveyancing through artificial intelligence. Our platform combines multiple specialized AI technologies to create a seamless, automated experience that's faster, more accurate, and more reliable than human-led processes.</p>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Legal Document Interpretation</h2>
+                
+                <div class="ai-component">
+                    <h3>Large Language Models (LLMs)</h3>
+                    <p>Fine-tuned on UK property law documents and precedents</p>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <p>Custom model based on GPT-4 or Claude with specialized fine-tuning on conveyancing documents and legal tests</p>
+                    </div>
+                    
+                    <div class="ai-benefits">
+                        <h4>Benefits</h4>
+                        <p>Understanding complex legal language, identifying anomalies, and extracting key data points</p>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Document Processing</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>OCR + Computer Vision:</strong> For handling scanned documents and official records</li>
+                            <li><strong>Named Entity Recognition:</strong> Extract key information like property details, dates, names, and financial terms</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Legal Reasoning Frameworks</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Retrieval-Augmented Generation (RAG):</strong> Connect LLMs with up-to-date legal databases for accurate legal reasoning</li>
+                            <li><strong>Specialized Legal Knowledge Graphs:</strong> Model relationships between legal concepts and requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Risk and Fraud Detection</h2>
+                
+                <div class="ai-component">
+                    <h3>Anomaly Detection</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Statistical models + ML:</strong> Identify unusual patterns in transactions</li>
+                            <li><strong>Graph Neural Networks:</strong> Detect suspicious relationships between parties</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Verification Systems</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Computer Vision + NLP:</strong> Verify ID documents and signatures</li>
+                            <li><strong>Behavioral Biometrics:</strong> Verify digital identity through behavior patterns</li>
+                            <li><strong>Anti-Money Laundering Models:</strong> Custom ML models trained on financial red flags</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Decision Intelligence</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Bayesian Networks:</strong> Calculate risk probabilities</li>
+                            <li><strong>Multi-factor risk scoring:</strong> Combine multiple risk indicators into a holistic assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Communication Systems</h2>
+                
+                <div class="ai-component">
+                    <h3>Conversational AI</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Fine-tuned LLMs:</strong> Handle natural language inquiries about the conveyancing process</li>
+                            <li><strong>Sentiment Analysis:</strong> Detect client concerns and adapt communication style</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Automated Updates</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>NLG (Natural Language Generation):</strong> Create human-readable progress reports</li>
+                            <li><strong>Personalization Engines:</strong> Tailor communication style and frequency to user preferences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Multi-channel Support</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Omnichannel AI:</strong> Consistent experience across web, mobile, email, and messaging</li>
+                            <li><strong>Voice AI Integration:</strong> Optional voice-based updates and queries</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Integration with Government/Third-Party Data</h2>
+                
+                <div class="ai-component">
+                    <h3>API Integration Suite</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Custom API Connectors:</strong> For Land Registry, HM Land Charges, HMRC, and local authorities</li>
+                            <li><strong>Data Transformation Pipelines:</strong> Convert between different data formats</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Autonomous Data Retrieval</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Intelligent Web Scraping:</strong> For publicly available but non-API accessible data</li>
+                            <li><strong>Secure Authentication Systems:</strong> For accessing authorized data sources</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="ai-component">
+                    <h3>Data Verification</h3>
+                    
+                    <div class="ai-implementation">
+                        <h4>Implementation</h4>
+                        <ul>
+                            <li><strong>Cross-validation ML Models:</strong> Compare data across multiple sources to verify accuracy</li>
+                            <li><strong>Blockchain Integration:</strong> For immutable record-keeping of verified data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plan-section">
+                <h2>Implementation Roadmap</h2>
+                <p>Our AI strategy follows a phased implementation approach:</p>
+                
+                <h3>Phase 1: Core Document Analysis</h3>
+                <ul>
+                    <li>Implement baseline LLM for document interpretation</li>
+                    <li>Develop document processing pipeline for standard formats</li>
+                    <li>Establish initial Land Registry API integrations</li>
+                </ul>
+                
+                <h3>Phase 2: Enhanced Automation</h3>
+                <ul>
+                    <li>Deploy RAG systems with comprehensive legal knowledge base</li>
+                    <li>Implement basic risk detection models</li>
+                    <li>Develop automated client communication systems</li>
+                </ul>
+                
+                <h3>Phase 3: Advanced Intelligence</h3>
+                <ul>
+                    <li>Launch sophisticated fraud detection systems</li>
+                    <li>Implement full API integration suite with all relevant authorities</li>
+                    <li>Deploy advanced personalization and optimization algorithms</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SearchFirstAI. All rights reserved.</p>
+    </footer>
+</body>
+</html>

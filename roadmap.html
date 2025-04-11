@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Development Roadmap | ConveyTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Optional: Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to roadmap page */
+        .roadmap-section {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--teal);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .phase {
+            margin-bottom: 3rem;
+        }
+        
+        .phase-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .phase-header h3 {
+            display: inline-block;
+            background-color: var(--teal);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.3rem;
+        }
+        
+        .milestone-container {
+            position: relative;
+            background-color: inherit;
+            width: 47%;
+        }
+        
+        .milestone-container.left {
+            left: 0;
+        }
+        
+        .milestone-container.right {
+            left: 53%;
+        }
+        
+        .milestone-content {
+            padding: 1.5rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .milestone-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--teal);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left .milestone-content::after {
+            right: -14px;
+        }
+        
+        .right .milestone-content::after {
+            left: -14px;
+        }
+        
+        .milestone-content h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--teal);
+        }
+        
+        .milestone-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 0;
+        }
+        
+        .milestone-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33.33%;
+        }
+        
+        .progress-dot {
+            width: 30px;
+            height: 30px;
+            background-color: var(--teal);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .progress-indicator::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            background-color: var(--light-gray);
+            top: 13px;
+            left: 15%;
+            right: 15%;
+            z-index: 1;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .milestone-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .milestone-container.left {
+                left: 0;
+            }
+            
+            .milestone-container.right {
+                left: 0;
+            }
+            
+            .milestone-content::after {
+                left: -14px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .phase-header h3 {
+                font-size: 1.1rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            .progress-indicator {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+            
+            .progress-step {
+                width: 100%;
+                margin-bottom: 1.5rem;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            
+            .progress-dot {
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+            
+            .progress-indicator::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+     <!-- Navigation -->
+     <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SearchFirstAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="startup-plan.html">Startup Plan</a></li>
+                <li><a href="ai-strategy.html">AI Strategy</a></li>
+                <li><a href="challenges.html">Challenges</a></li>
+                <li><a href="differentiation.html">Differentiation</a></li>
+                <li><a href="customer-journey.html">Customer Journey</a></li>
+                <li><a href="financial.html">Financial Analysis</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="prototype-plan.html">Prototype Plan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Our Development Roadmap</h1>
+            <p>From research to market - our 90-day journey to revolutionize conveyancing</p>
+        </div>
+    </section>
+
+    <!-- Progress Indicator -->
+    <div class="container mt-5 mb-5">
+        <div class="progress-indicator">
+            <div class="progress-step">
+                <div class="progress-dot">1</div>
+                <div class="progress-label">Research & Validation</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-dot">2</div>
+                <div class="progress-label">Core Technology</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-dot">3</div>
+                <div class="progress-label">MVP & Testing</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roadmap Timeline -->
+    <section class="roadmap-section">
+        <div class="container">
+            <h2 class="section-title">Our 90-Day Development Plan</h2>
+            
+            <div class="timeline">
+                <!-- Phase 1 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <h3>Days 1-30: Research & Validation</h3>
+                    </div>
+                    
+                    <div class="milestone-container left">
+                        <div class="milestone-content">
+                            <h4>User Research & Process Mapping</h4>
+                            <ul>
+                                <li>Conduct 50+ interviews with recent homebuyers about pain points</li>
+                                <li>Map the complete conveyancing process with 100+ decision points</li>
+                                <li>Analyze 200+ sample conveyancing documents for training data</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-container right">
+                        <div class="milestone-content">
+                            <h4>Business & Regulatory Framework</h4>
+                            <ul>
+                                <li>Research regulatory requirements and identify compliance challenges</li>
+                                <li>Build financial model and unit economics projections</li>
+                                <li>Identify and approach potential law firm partners for regulatory compliance</li>
+                                <li>Create detailed data flow diagrams for end-to-end process</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 2 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <h3>Days 31-60: Core Technology Development</h3>
+                    </div>
+                    
+                    <div class="milestone-container left">
+                        <div class="milestone-content">
+                            <h4>AI & Document Processing</h4>
+                            <ul>
+                                <li>Develop document processing pipeline MVP (LLM + OCR)</li>
+                                <li>Build first iteration of legal reasoning engine for basic cases</li>
+                                <li>Create initial RAG system with core legal knowledge base</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-container right">
+                        <div class="milestone-content">
+                            <h4>Platform Infrastructure</h4>
+                            <ul>
+                                <li>Develop prototype user interface for client onboarding</li>
+                                <li>Establish initial integrations with Land Registry APIs</li>
+                                <li>Build authentication and security foundations</li>
+                                <li>Set up data storage architecture with GDPR compliance</li>
+                                <li>Create basic automated communication flows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phase 3 -->
+                <div class="phase">
+                    <div class="phase-header">
+                        <h3>Days 61-90: MVP Development & Testing</h3>
+                    </div>
+                    
+                    <div class="milestone-container left">
+                        <div class="milestone-content">
+                            <h4>Prototype Validation</h4>
+                            <ul>
+                                <li>Complete end-to-end prototype for standard residential transaction</li>
+                                <li>Conduct supervised test runs with 10 simulated transactions</li>
+                                <li>Develop evaluation metrics for accuracy and efficiency</li>
+                                <li>Build basic client dashboard for process monitoring</li>
+                                <li>Begin real-world testing with 5 actual transactions (under lawyer supervision)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="milestone-container right">
+                        <div class="milestone-content">
+                            <h4>Go-to-Market Preparation</h4>
+                            <ul>
+                                <li>Implement feedback loops from initial testing</li>
+                                <li>Develop go-to-market strategy and launch plan</li>
+                                <li>Begin discussions with key partners (estate agents, mortgage brokers)</li>
+                                <li>Prepare for seed funding round with demonstration-ready prototype</li>
+                                <li>Define roadmap for the next 6 months of development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want to learn more about our progress?</h2>
+            <p class="mb-4">Join our mailing list for regular updates or get in touch to discuss partnership opportunities.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <p>&copy; 2025 ConveyTech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

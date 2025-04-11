@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Week Prototype Plan | ConveyTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Styles specific to prototype plan page */
+        .prototype-section {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+        
+        .focus-area {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .focus-area:hover {
+            transform: translateY(-5px);
+        }
+        
+        .focus-area h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--teal);
+        }
+        
+        .focus-area-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .focus-area-header i {
+            font-size: 2rem;
+            color: var(--teal);
+        }
+        
+        .focus-area ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .focus-area li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .week-container {
+            margin-bottom: 4rem;
+        }
+        
+        .week-header {
+            background-color: var(--teal);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .day-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .day-card {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .day-card h4 {
+            margin-bottom: 1rem;
+            color: var(--teal);
+            display: flex;
+            align-items: center;
+        }
+        
+        .day-card h4 span {
+            background-color: var(--teal);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .day-card ul {
+            margin-left: 1.5rem;
+        }
+        
+        .day-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .metric-card {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--teal);
+        }
+        
+        .metric-card h4 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar-container {
+            background-color: #ddd;
+            height: 10px;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--teal);
+            border-radius: 5px;
+        }
+        
+        .shortcut-section {
+            background-color: var(--cream);
+            padding: 3rem 2rem;
+        }
+        
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .shortcut-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .shortcut-card h4 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shortcut-card h4 i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .next-steps-section {
+            padding: 4rem 2rem;
+        }
+        
+        .next-steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .next-step-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .next-step-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 12px;
+            height: 12px;
+            background-color: var(--teal);
+            border-radius: 50%;
+        }
+        
+        .next-step-item h4 {
+            margin-bottom: 0.75rem;
+            color: var(--teal);
+        }
+        
+        @media (max-width: 768px) {
+            .focus-area-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .focus-area-header i {
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .metrics-container,
+            .shortcut-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">SearchFirstAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="startup-plan.html">Startup Plan</a></li>
+                <li><a href="ai-strategy.html">AI Strategy</a></li>
+                <li><a href="challenges.html">Challenges</a></li>
+                <li><a href="differentiation.html">Differentiation</a></li>
+                <li><a href="customer-journey.html">Customer Journey</a></li>
+                <li><a href="financial.html">Financial Analysis</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="prototype-plan.html">Prototype Plan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Search First AI: 3-Week Prototype Plan</h1>
+            <p>Our focused strategy to rapidly build a functional prototype that demonstrates core value</p>
+        </div>
+    </section>
+
+    <!-- Prototype Focus Areas -->
+    <section class="prototype-section">
+        <div class="container">
+            <h2 class="section-title">Prototype Focus Areas</h2>
+            
+            <div class="focus-area">
+                <div class="focus-area-header">
+                    <h3>1. Core Document Analysis Engine</h3>
+                    <i class="fas fa-file-search"></i>
+                </div>
+                <h4 class="mb-2">Build a simplified LLM-based document analyzer</h4>
+                <ul>
+                    <li>Fine-tune an existing LLM on a small set of conveyancing documents</li>
+                    <li>Focus on extracting key information from title registers and leasehold documents</li>
+                    <li>Implement basic classification of property types and ownership structures</li>
+                </ul>
+                
+                <h4 class="mb-2 mt-4">Test with 10-15 sample property documents</h4>
+                <ul>
+                    <li>Use publicly available Land Registry samples</li>
+                    <li>Include both straightforward and complex examples</li>
+                </ul>
+            </div>
+            
+            <div class="focus-area">
+                <div class="focus-area-header">
+                    <h3>2. Simplified User Flow</h3>
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h4 class="mb-2">Create a basic web interface showcasing the critical user journey</h4>
+                <ul>
+                    <li>Property input screen (address, type, basic details)</li>
+                    <li>Document upload functionality</li>
+                    <li>Results dashboard showing extracted information</li>
+                    <li>Simplified legal status report</li>
+                </ul>
+                
+                <p class="mt-3">Focus on the "wow moment" where AI extracts complex legal details instantly</p>
+            </div>
+            
+            <div class="focus-area">
+                <div class="focus-area-header">
+                    <h3>3. Single API Integration</h3>
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h4 class="mb-2">Implement one key API connection as proof of concept</h4>
+                <ul>
+                    <li>Land Registry Title Register API (most critical for demonstrating core value)</li>
+                    <li>Build minimal viable integration to fetch tenure information</li>
+                    <li>Create simple visualization of the data</li>
+                </ul>
+                
+                <p class="mt-3">Mock the other API integrations for demo purposes</p>
+            </div>
+            
+            <div class="focus-area">
+                <div class="focus-area-header">
+                    <h3>4. Simulated End-to-End Process</h3>
+                    <i class="fas fa-route"></i>
+                </div>
+                <h4 class="mb-2">Create a guided demo path that shows the full potential</h4>
+                <ul>
+                    <li>Use pre-populated sample properties</li>
+                    <li>Show "before and after" comparison with traditional conveyancing</li>
+                    <li>Highlight time and cost savings with concrete examples</li>
+                </ul>
+                
+                <p class="mt-3">Script the demo to avoid edge cases during presentations</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Implementation Plan -->
+    <section class="prototype-section" style="background-color: var(--cream);">
+        <div class="container">
+            <h2 class="section-title">Implementation Plan</h2>
+            
+            <!-- Week 1 -->
+            <div class="week-container">
+                <div class="week-header">
+                    <h3>Week 1: Foundation</h3>
+                </div>
+                
+                <div class="day-grid">
+                    <div class="day-card">
+                        <h4><span>1-2</span> Collect Sample Documents</h4>
+                        <ul>
+                            <li>Gather 20+ representative conveyancing documents</li>
+                            <li>Categorize by property type and complexity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>3-4</span> Initial LLM Setup</h4>
+                        <ul>
+                            <li>Set up development environment</li>
+                            <li>Implement document parsing pipeline</li>
+                            <li>Create basic prompt engineering for LLM</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>5-7</span> User Interface Skeleton</h4>
+                        <ul>
+                            <li>Build minimal UI framework</li>
+                            <li>Implement basic user flow</li>
+                            <li>Create wireframes for key screens</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 2 -->
+            <div class="week-container">
+                <div class="week-header">
+                    <h3>Week 2: Core Functionality</h3>
+                </div>
+                
+                <div class="day-grid">
+                    <div class="day-card">
+                        <h4><span>8-10</span> Document Analysis Implementation</h4>
+                        <ul>
+                            <li>Fine-tune document extraction capabilities</li>
+                            <li>Test with sample documents</li>
+                            <li>Implement error handling for common issues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>11-12</span> Land Registry API Connection</h4>
+                        <ul>
+                            <li>Set up API authentication</li>
+                            <li>Implement basic query functionality</li>
+                            <li>Create simple data visualizations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>13-14</span> Integration Layer</h4>
+                        <ul>
+                            <li>Connect UI to backend services</li>
+                            <li>Implement basic user authentication</li>
+                            <li>Create document storage solution</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 3 -->
+            <div class="week-container">
+                <div class="week-header">
+                    <h3>Week 3: Refinement and Demo Prep</h3>
+                </div>
+                
+                <div class="day-grid">
+                    <div class="day-card">
+                        <h4><span>15-17</span> Testing and Debugging</h4>
+                        <ul>
+                            <li>Test end-to-end flows with sample properties</li>
+                            <li>Fix critical issues</li>
+                            <li>Optimize performance for demo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>18-19</span> Demo Script and Materials</h4>
+                        <ul>
+                            <li>Create compelling demo narrative</li>
+                            <li>Prepare sample property showcases</li>
+                            <li>Document key selling points and technical capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="day-card">
+                        <h4><span>20-21</span> Stakeholder Previews</h4>
+                        <ul>
+                            <li>Run internal demo sessions</li>
+                            <li>Gather feedback</li>
+                            <li>Make final adjustments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Technical Shortcuts -->
+    <section class="shortcut-section">
+        <div class="container">
+            <h2 class="section-title">Technical Implementation Shortcuts</h2>
+            
+            <div class="shortcut-grid">
+                <div class="shortcut-card">
+                    <h4><i class="fas fa-rocket"></i> Use Existing APIs Instead of Building Custom</h4>
+                    <ul>
+                        <li>Leverage ChatGPT API for document analysis instead of fine-tuning custom models</li>
+                        <li>Use ready-made UI libraries and templates (Material UI, Tailwind)</li>
+                        <li>Implement Firebase for quick backend setup</li>
+                    </ul>
+                </div>
+                
+                <div class="shortcut-card">
+                    <h4><i class="fas fa-road"></i> Focus on Happy Path Only</h4>
+                    <ul>
+                        <li>Skip complex error handling</li>
+                        <li>Assume well-formatted documents</li>
+                        <li>Ignore edge cases for the prototype</li>
+                    </ul>
+                </div>
+                
+                <div class="shortcut-card">
+                    <h4><i class="fas fa-magic"></i> Mock Where Necessary</h4>
+                    <ul>
+                        <li>Pre-process test documents to ensure successful analysis</li>
+                        <li>Hardcode certain responses for predictable demo flow</li>
+                        <li>Use Wizard of Oz techniques for complex features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Metrics -->
+    <section class="prototype-section">
+        <div class="container">
+            <h2 class="section-title">Key Metrics for Prototype Success</h2>
+            
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <h4>Document Analysis Accuracy</h4>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 80%"></div>
+                    </div>
+                    <p>Successfully extract key information from >80% of test documents</p>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 90%"></div>
+                    </div>
+                    <p>Correctly identify property tenure in >90% of cases</p>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                    <p>Accurately flag potential issues in sample properties</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>User Experience Validation</h4>
+                    <p class="mb-2"><i class="fas fa-clock"></i> Time to complete basic property submission <5 minutes</p>
+                    <p class="mb-2"><i class="fas fa-comment-alt"></i> Clearly communicates legal status in non-technical language</p>
+                    <p><i class="fas fa-chart-pie"></i> Provides compelling visualization of property information</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Technical Feasibility Confirmation</h4>
+                    <p class="mb-2"><i class="fas fa-check-circle"></i> Successfully connects to at least one external data source</p>
+                    <p class="mb-2"><i class="fas fa-sitemap"></i> Demonstrates scalable architecture approach</p>
+                    <p><i class="fas fa-exclamation-triangle"></i> Identifies potential technical challenges for full implementation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Next Steps -->
+    <section class="next-steps-section" style="background-color: var(--cream);">
+        <div class="next-steps-container">
+            <h2 class="section-title">Next Steps After Prototype</h2>
+            
+            <div class="next-step-item">
+                <h4>Stakeholder Feedback Sessions</h4>
+                <ul>
+                    <li>Demo to potential investors</li>
+                    <li>Get input from real estate professionals</li>
+                    <li>Test with potential customers</li>
+                </ul>
+            </div>
+            
+            <div class="next-step-item">
+                <h4>Development Roadmap Refinement</h4>
+                <ul>
+                    <li>Prioritize features based on prototype learnings</li>
+                    <li>Identify technical debt accumulated during rapid prototyping</li>
+                    <li>Create detailed implementation plan for v1.0</li>
+                </ul>
+            </div>
+            
+            <div class="next-step-item">
+                <h4>Resource Planning</h4>
+                <ul>
+                    <li>Define team structure needed for full development</li>
+                    <li>Estimate realistic timelines for full product</li>
+                    <li>Calculate more precise development costs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to see our prototype in action?</h2>
+            <p class="mb-4">Contact us to schedule a demonstration or discuss partnership opportunities.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="prototype-plan.html">Prototype Plan</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <p>&copy; 2025 ConveyTech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
