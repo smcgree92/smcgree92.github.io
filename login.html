@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | SearchFirst UK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Okta widget CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/okta-signin-widget/7.5.1/css/okta-sign-in.min.css" rel="stylesheet">
+</head>
+<body>
+  <div id="okta-signin-container"></div>
+
+  <!-- Okta widget JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/okta-signin-widget/7.5.1/js/okta-sign-in.min.js"></script>
+  
+  <script>
+    const signIn = new OktaSignIn({
+      baseUrl: 'dev-z2yrr72vnbiwlppi.us.auth0.com',
+      clientId: 'jRXOQGd39Z8BpK11o6GucNunMI0C6ssz',
+      redirectUri: 'https://searchfirst.uk/login/callback',
+      authParams: {
+        responseType: ['token', 'id_token']
+      }
+    });
+
+    // Check if there's an Okta session
+    signIn.session.exists((exists) => {
+      if (exists) {
+        // Already signed in, redirect to home page
+        window.location.href = '/index.html';
+      } else {
+        // Render the sign-in widget
+        signIn.renderEl({ el: '#okta-signin-container' }, 
+          (res) => {
+            if (res.status === 'SUCCESS') {
+              signIn.tokenManager.add('accessToken', res.tokens.accessToken);
+              signIn.tokenManager.add('idToken', res.tokens.idToken);
+              window.location.href = '/index.html';
+            }
+          },
+          (err) => {
+            console.error('Error rendering sign-in widget', err);
+          }
+        );
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Processing Login</title>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/okta-signin-widget/7.5.1/js/okta-sign-in.min.js"></script>
+</head>
+<body>
+  <p>Processing your login...</p>
+  
+  <script>
+    const signIn = new OktaSignIn({
+      baseUrl: 'dev-z2yrr72vnbiwlppi.us.auth0.com',
+      clientId: 'jRXOQGd39Z8BpK11o6GucNunMI0C6ssz',
+      redirectUri: 'https://searchfirst.uk/login/callback'
+    });
+
+    // Parse the tokens from the URL
+    signIn.token.parseFromUrl()
+      .then(tokens => {
+        // Store tokens
+        signIn.tokenManager.add('accessToken', tokens.tokens.accessToken);
+        signIn.tokenManager.add('idToken', tokens.tokens.idToken);
+        // Redirect to the home page
+        window.location.href = '/index.html';
+      })
+      .catch(error => {
+        console.error('Error parsing tokens', error);
+        window.location.href = '/login.html';
+      });
+  </script>
+</body>
+</html>
