@@ -2,7 +2,7 @@
   "name": "searchfirst-ai-prototype",
   "version": "1.0.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/searchfirst-ai-prototype/build",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

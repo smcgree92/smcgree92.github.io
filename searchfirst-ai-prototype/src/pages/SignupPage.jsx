@@ -97,7 +97,7 @@ const SignupPage = () => {
   
   // Handle back to main website
   const goToMainWebsite = () => {
-    window.location.href = '../index.html'; // Navigate to main website
+    window.location.href = '/'; // Navigate to main website
   };
   
   return (

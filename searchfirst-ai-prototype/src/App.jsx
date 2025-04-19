@@ -17,8 +17,8 @@ export const MainSiteNavContext = React.createContext();
 export const MainSiteNavProvider = ({ children }) => {
   // Function to navigate back to main site
   const goToMainSite = () => {
-    // Navigate to parent directory (assumes prototype is in a subdirectory)
-    window.location.href = '../index.html';
+    // Navigate to main site root
+    window.location.href = '/';
   };
 
   return (
