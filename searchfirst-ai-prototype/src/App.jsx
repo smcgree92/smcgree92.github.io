@@ -1,19 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import './styles.css';
 
-// Import pages
-import SignupPage from './pages/SignupPage';
-import AIIntroductionPage from './pages/AIIntroductionPage';
-import PropertyDetailsPage from './pages/PropertyDetailsPage';
-import SearchAuthorizationPage from './pages/SearchAuthorizationPage';
-import SearchResultsPage from './pages/SearchResultsPage';
+// Import pages 
+import SignupPage from './pages/SignupPage'; 
+import AIIntroductionPage from './pages/AIIntroductionPage'; 
+import PropertyDetailsPage from './pages/PropertyDetailsPage'; 
+import SearchAuthorizationPage from './pages/SearchAuthorizationPage'; 
+import SearchResultsPage from './pages/SearchResultsPage'; 
 import DocumentPreparationPage from './pages/DocumentPreparationPage';
 
-// Add a navigation context for the main site
+// Add a navigation context for the main site 
 export const MainSiteNavContext = React.createContext();
 
-// Main site navigation provider
+// Main site navigation provider 
 export const MainSiteNavProvider = ({ children }) => {
   // Function to navigate back to main site
   const goToMainSite = () => {
@@ -29,8 +29,11 @@ export const MainSiteNavProvider = ({ children }) => {
 };
 
 function App() {
+  // Get the base URL from homepage in package.json
+  const basename = '/searchfirst-ai-prototype';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <MainSiteNavProvider>
         <Routes>
           <Route path="/" element={<SignupPage />} />
