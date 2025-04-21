@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MainSiteLayout from '../../layouts/MainSiteLayout';
 
 const PrototypePlanPage = () => {
@@ -12,7 +13,7 @@ const PrototypePlanPage = () => {
         </div>
       </section>
 
-      {/* Prototype Focus Areas */}
+      {/* Main Content */}
       <section className="prototype-section">
         <div className="container">
           <h2 className="section-title">Prototype Focus Areas</h2>
@@ -198,12 +199,141 @@ const PrototypePlanPage = () => {
         </div>
       </section>
       
+      {/* Technical Shortcuts */}
+      <section className="prototype-section">
+        <div className="container">
+          <h2 className="section-title">Technical Implementation Shortcuts</h2>
+          
+          <div className="shortcuts-grid">
+            <div className="shortcut-card">
+              <h3>Use Existing APIs Instead of Building Custom</h3>
+              <ul>
+                <li>Leverage ChatGPT API for document analysis instead of fine-tuning custom models</li>
+                <li>Use ready-made UI libraries and templates (Material UI, Tailwind)</li>
+                <li>Implement Firebase for quick backend setup</li>
+              </ul>
+            </div>
+            
+            <div className="shortcut-card">
+              <h3>Focus on Happy Path Only</h3>
+              <ul>
+                <li>Skip complex error handling</li>
+                <li>Assume well-formatted documents</li>
+                <li>Ignore edge cases for the prototype</li>
+              </ul>
+            </div>
+            
+            <div className="shortcut-card">
+              <h3>Mock Where Necessary</h3>
+              <ul>
+                <li>Pre-process test documents to ensure successful analysis</li>
+                <li>Hardcode certain responses for predictable demo flow</li>
+                <li>Use Wizard of Oz techniques for complex features</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Success Metrics */}
+      <section className="prototype-section" style={{ backgroundColor: 'var(--light-gray)' }}>
+        <div className="container">
+          <h2 className="section-title">Key Metrics for Prototype Success</h2>
+          
+          <div className="metrics-container">
+            <div className="metric-group">
+              <h3>Document Analysis Accuracy</h3>
+              <div className="metric-item">
+                <div className="metric-bullet success"></div>
+                <p>Successfully extract key information from &gt;80% of test documents</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet success"></div>
+                <p>Correctly identify property tenure in &gt;90% of cases</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet success"></div>
+                <p>Accurately flag potential issues in sample properties</p>
+              </div>
+            </div>
+            
+            <div className="metric-group">
+              <h3>User Experience Validation</h3>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Time to complete basic property submission &lt;5 minutes</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Clearly communicates legal status in non-technical language</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Provides compelling visualization of property information</p>
+              </div>
+            </div>
+            
+            <div className="metric-group">
+              <h3>Technical Feasibility Confirmation</h3>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Successfully connects to at least one external data source</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Demonstrates scalable architecture approach</p>
+              </div>
+              <div className="metric-item">
+                <div className="metric-bullet pending"></div>
+                <p>Identifies potential technical challenges for full implementation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Next Steps */}
+      <section className="prototype-section">
+        <div className="container">
+          <h2 className="section-title">Next Steps After Prototype</h2>
+          
+          <div className="next-steps-grid">
+            <div className="next-step-card">
+              <h3>Stakeholder Feedback Sessions</h3>
+              <ul>
+                <li>Demo to potential investors</li>
+                <li>Get input from real estate professionals</li>
+                <li>Test with potential customers</li>
+              </ul>
+            </div>
+            
+            <div className="next-step-card">
+              <h3>Development Roadmap Refinement</h3>
+              <ul>
+                <li>Prioritize features based on prototype learnings</li>
+                <li>Identify technical debt accumulated during rapid prototyping</li>
+                <li>Create detailed implementation plan for v1.0</li>
+              </ul>
+            </div>
+            
+            <div className="next-step-card">
+              <h3>Resource Planning</h3>
+              <ul>
+                <li>Define team structure needed for full development</li>
+                <li>Estimate realistic timelines for full product</li>
+                <li>Calculate more precise development costs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* CTA Section */}
       <section className="cta-section">
         <div className="container">
           <h2>Ready to see our prototype in action?</h2>
           <p className="mb-4">Try our interactive prototype to experience the AI-powered conveyancing platform.</p>
-          <a href="/app" className="cta-button">Launch Prototype</a>
+          <Link to="/app" className="cta-button">Launch Prototype</Link>
         </div>
       </section>
     </MainSiteLayout>
