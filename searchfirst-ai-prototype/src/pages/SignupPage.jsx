@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
+import { useNavigate, Link } from 'react-router-dom';
+import MainLayout from '../layouts/MainLayout';
 import ProgressBar from '../components/ProgressBar';
 
 const SignupPage = () => {
@@ -91,21 +91,18 @@ const SignupPage = () => {
     
     // If form is valid, proceed
     if (isFormValid()) {
-      navigate('/ai-introduction');
+      navigate('/app/ai-introduction');
     }
   };
   
   // Handle back to main website
   const goToMainWebsite = () => {
-    window.location.href = '/'; // Navigate to main website
+    navigate('/'); // Navigate to main website
   };
   
   return (
-    <>
-      <NavigationBar />
-      
-      <div className="content">
-        <div className="content-container">
+    <MainLayout>
+      <div className="content-container">
           {/* Back to Main Website Button */}
           <div style={{ textAlign: 'right', marginBottom: '1rem' }}>
             <button 
@@ -312,12 +309,7 @@ const SignupPage = () => {
             </form>
           </div>
         </div>
-      </div>
-
-      <footer>
-        <p>&copy; 2025 Search First AI. All rights reserved.</p>
-      </footer>
-    </>
+    </MainLayout>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
+import MainLayout from '../layouts/MainLayout';
 import ProgressBar from '../components/ProgressBar';
 import AIAssistant from '../components/AIAssistant';
 
@@ -440,7 +440,7 @@ We're also waiting for your mortgage lender to approve the Mortgage Deed.`;
 
   // Navigation handlers
   const handleBack = () => {
-    navigate('/search-results');
+    navigate('/app/search-results');
   };
 
   const handleComplete = () => {
@@ -448,58 +448,52 @@ We're also waiting for your mortgage lender to approve the Mortgage Deed.`;
   };
 
   return (
-    <>
-      <NavigationBar />
-      
-      <div className="content">
-        <div className="content-container">
-          {/* Progress Bar */}
-          <ProgressBar step={5} totalSteps={5} />
+    <MainLayout>
+      {/* Progress Bar */}
+      <ProgressBar step={5} totalSteps={5} />
 
-          <div className="page-layout">
-            <div className="main-content">
-              {/* Document Container */}
-              <div className="document-container">
-                <div className="document-header">
-                  <h2>Required Legal Documents</h2>
-                  <p>I've prepared all the necessary legal documents for your property purchase.</p>
-                </div>
-                
-                {/* Document Cards Grid */}
-                <div className="document-cards">
-                  {documents.map(document => (
-                    <DocumentCard 
-                      key={document.id}
-                      document={document}
-                      onView={handleViewDocument}
-                      onAction={handleDocumentAction}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Transaction Timeline */}
-              <div className="timeline-container">
-                <h2>Transaction Timeline</h2>
-                <p>Your personalized timeline based on progress so far.</p>
-                
-                <Timeline events={timelineEvents} />
-              </div>
-
-              <div className="btn-container">
-                <button type="button" onClick={handleBack} className="btn btn-secondary">Back to Search Results</button>
-                <button type="button" onClick={handleComplete} className="btn">Complete All Documents</button>
-              </div>
+      <div className="page-layout">
+        <div className="main-content">
+          {/* Document Container */}
+          <div className="document-container">
+            <div className="document-header">
+              <h2>Required Legal Documents</h2>
+              <p>I've prepared all the necessary legal documents for your property purchase.</p>
             </div>
             
-            {/* Sidebar with AI Assistant */}
-            <div className="sidebar">
-              <AIAssistant 
-                message={assistantMessage}
-                tips={assistantTips}
-              />
+            {/* Document Cards Grid */}
+            <div className="document-cards">
+              {documents.map(document => (
+                <DocumentCard 
+                  key={document.id}
+                  document={document}
+                  onView={handleViewDocument}
+                  onAction={handleDocumentAction}
+                />
+              ))}
             </div>
           </div>
+
+          {/* Transaction Timeline */}
+          <div className="timeline-container">
+            <h2>Transaction Timeline</h2>
+            <p>Your personalized timeline based on progress so far.</p>
+            
+            <Timeline events={timelineEvents} />
+          </div>
+
+          <div className="btn-container">
+            <button type="button" onClick={handleBack} className="btn btn-secondary">Back to Search Results</button>
+            <button type="button" onClick={handleComplete} className="btn">Complete All Documents</button>
+          </div>
+        </div>
+        
+        {/* Sidebar with AI Assistant */}
+        <div className="sidebar">
+          <AIAssistant 
+            message={assistantMessage}
+            tips={assistantTips}
+          />
         </div>
       </div>
 
@@ -552,11 +546,7 @@ We're also waiting for your mortgage lender to approve the Mortgage Deed.`;
           </div>
         </div>
       )}
-
-      <footer>
-        <p>&copy; 2025 Search First AI. All rights reserved.</p>
-      </footer>
-    </>
+    </MainLayout>
   );
 };
 

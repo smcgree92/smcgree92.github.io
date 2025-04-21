@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
+import MainLayout from '../layouts/MainLayout';
 import ProgressBar from '../components/ProgressBar';
 import AIAssistant from '../components/AIAssistant';
 
@@ -140,12 +140,12 @@ The Local Authority, Water & Drainage, and Environmental searches are essential 
     }
     
     // In a real app, this would process payment and submit search requests
-    navigate('/search-results');
+    navigate('/app/search-results');
   };
   
   // Handle back button
   const handleBack = () => {
-    navigate('/property-details');
+    navigate('/app/property-details');
   };
   
   // Search Card component
@@ -160,11 +160,8 @@ The Local Authority, Water & Drainage, and Environmental searches are essential 
   };
   
   return (
-    <>
-      <NavigationBar />
-      
-      <div className="content">
-        <div className="content-container">
+    <MainLayout>
+      <div className="content-container">
           {/* Progress Bar */}
           <ProgressBar step={4} totalSteps={5} />
 
@@ -272,12 +269,7 @@ The Local Authority, Water & Drainage, and Environmental searches are essential 
             </div>
           </div>
         </div>
-      </div>
-
-      <footer>
-        <p>&copy; 2025 Search First AI. All rights reserved.</p>
-      </footer>
-    </>
+    </MainLayout>
   );
 };
 

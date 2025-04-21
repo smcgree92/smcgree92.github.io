@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
+import MainLayout from '../layouts/MainLayout';
 import ProgressBar from '../components/ProgressBar';
 
 const AIIntroductionPage = () => {
@@ -108,15 +108,12 @@ const AIIntroductionPage = () => {
 
   // Handle continue button
   const handleContinue = () => {
-    navigate('/property-details');
+    navigate('/app/property-details');
   };
 
   return (
-    <>
-      <NavigationBar />
-      
-      <div className="content">
-        <div className="content-container">
+    <MainLayout>
+      <div className="content-container">
           {/* Progress Bar */}
           <ProgressBar step={2} totalSteps={5} />
 
@@ -264,12 +261,7 @@ const AIIntroductionPage = () => {
             </button>
           </div>
         </div>
-      </div>
-
-      <footer>
-        <p>&copy; 2025 Search First AI. All rights reserved.</p>
-      </footer>
-    </>
+    </MainLayout>
   );
 };
 

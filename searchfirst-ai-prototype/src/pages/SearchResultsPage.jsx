@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
+import MainLayout from '../layouts/MainLayout';
 import ProgressBar from '../components/ProgressBar';
 import AIAssistant from '../components/AIAssistant';
 
@@ -161,133 +161,123 @@ The minor concerns are typical for properties in this area and unlikely to impac
   
   // Handle back button
   const handleBack = () => {
-    navigate('/search-authorization');
+    navigate('/app/search-authorization');
   };
   
   // Handle proceed button
   const handleProceed = () => {
-    navigate('/document-preparation');
+    navigate('/app/document-preparation');
   };
   
   return (
-    <>
-      <NavigationBar />
-      
-      <div className="content">
-        <div className="content-container">
-          {/* Progress Bar */}
-          <ProgressBar step={4} totalSteps={5} />
+    <MainLayout>
+      {/* Progress Bar */}
+      <ProgressBar step={4} totalSteps={5} />
 
-          <div className="page-layout">
-            <div className="main-content">
-              <div className="results-container">
-                <div className="results-header">
-                  <h2>Search Results Analysis</h2>
-                  <p>I've analyzed all your search results and prepared a comprehensive summary. Here's what I found for your property at 42 Willow Avenue.</p>
-                </div>
-                
-                {/* Results Summary Statistics */}
-                <div className="results-summary">
-                  <div className="summary-stat">
-                    <div className="value">{searchSummary.totalSearches}</div>
-                    <div className="label">Searches Completed</div>
-                  </div>
-                  
-                  <div className="summary-stat">
-                    <div className="value">{searchSummary.criticalIssues}</div>
-                    <div className="label">Critical Issues</div>
-                  </div>
-                  
-                  <div className="summary-stat">
-                    <div className="value">{searchSummary.minorConcerns}</div>
-                    <div className="label">Minor Concerns</div>
-                  </div>
-                  
-                  <div className="summary-stat">
-                    <div className="value">{searchSummary.daysToComplete}</div>
-                    <div className="label">Days to Complete</div>
-                  </div>
-                </div>
-                
-                {/* Tabbed Search Results */}
-                <div className="search-results">
-                  <div className="result-tabs">
-                    {searchTabs.map(tab => (
-                      <div 
-                        key={tab.id}
-                        className={`result-tab ${activeTab === tab.id ? 'active' : ''}`}
-                        onClick={() => handleTabClick(tab.id)}
-                      >
-                        {tab.label}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Tab Content Sections */}
-                  {Object.keys(searchResults).map(tabId => (
-                    <div 
-                      key={tabId}
-                      id={tabId}
-                      className={`tab-content ${activeTab === tabId ? 'active' : ''}`}
-                      style={{ display: activeTab === tabId ? 'block' : 'none' }}
-                    >
-                      <div className="result-card">
-                        <div className="result-header">
-                          <h3>
-                            <i className={`fas fa-${searchResults[tabId].icon}`}></i> {searchResults[tabId].title}
-                          </h3>
-                          <div className={`status-pill status-${searchResults[tabId].status}`}>
-                            {searchResults[tabId].statusText}
-                          </div>
-                        </div>
-                        <div className="result-body">
-                          {searchResults[tabId].items.map((item, index) => (
-                            <div key={index} className="result-item">
-                              <h4>{item.title}</h4>
-                              <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* AI Assessment Summary */}
-                <div className="form-section">
-                  <h2>AI Assessment Summary</h2>
-                  <p>I've thoroughly analyzed all search results and can confirm that no critical issues were identified that would prevent the property transaction from proceeding. There are two minor concerns:</p>
-                  
-                  <ol style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }}>
-                    <li style={{ marginBottom: '0.5rem' }}>A planned traffic calming scheme on Willow Avenue scheduled for 2026. This is unlikely to significantly impact the property value and may improve road safety in the long term.</li>
-                    <li style={{ marginBottom: '0.5rem' }}>Low surface water flood risk (once every 75-100 years). This is common in many London properties and isn't severe enough to affect insurability or require special measures.</li>
-                  </ol>
-                  
-                  <p>Overall, these search results are favorable and indicate the property is suitable for purchase. I recommend proceeding to the next stage of preparing the legal documents for your transaction.</p>
-                </div>
-                
-                <div className="btn-container">
-                  <button type="button" onClick={handleBack} className="btn btn-secondary">Back to Searches</button>
-                  <button type="button" onClick={handleProceed} className="btn">Proceed to Document Preparation</button>
-                </div>
+      <div className="page-layout">
+        <div className="main-content">
+          <div className="results-container">
+            <div className="results-header">
+              <h2>Search Results Analysis</h2>
+              <p>I've analyzed all your search results and prepared a comprehensive summary. Here's what I found for your property at 42 Willow Avenue.</p>
+            </div>
+            
+            {/* Results Summary Statistics */}
+            <div className="results-summary">
+              <div className="summary-stat">
+                <div className="value">{searchSummary.totalSearches}</div>
+                <div className="label">Searches Completed</div>
+              </div>
+              
+              <div className="summary-stat">
+                <div className="value">{searchSummary.criticalIssues}</div>
+                <div className="label">Critical Issues</div>
+              </div>
+              
+              <div className="summary-stat">
+                <div className="value">{searchSummary.minorConcerns}</div>
+                <div className="label">Minor Concerns</div>
+              </div>
+              
+              <div className="summary-stat">
+                <div className="value">{searchSummary.daysToComplete}</div>
+                <div className="label">Days to Complete</div>
               </div>
             </div>
             
-            {/* Sidebar with AI Assistant */}
-            <div className="sidebar">
-              <AIAssistant 
-                message={assistantMessage}
-                tips={assistantTips}
-              />
+            {/* Tabbed Search Results */}
+            <div className="search-results">
+              <div className="result-tabs">
+                {searchTabs.map(tab => (
+                  <div 
+                    key={tab.id}
+                    className={`result-tab ${activeTab === tab.id ? 'active' : ''}`}
+                    onClick={() => handleTabClick(tab.id)}
+                  >
+                    {tab.label}
+                  </div>
+                ))}
+              </div>
+              
+              {/* Tab Content Sections */}
+              {Object.keys(searchResults).map(tabId => (
+                <div 
+                  key={tabId}
+                  id={tabId}
+                  className={`tab-content ${activeTab === tabId ? 'active' : ''}`}
+                  style={{ display: activeTab === tabId ? 'block' : 'none' }}
+                >
+                  <div className="result-card">
+                    <div className="result-header">
+                      <h3>
+                        <i className={`fas fa-${searchResults[tabId].icon}`}></i> {searchResults[tabId].title}
+                      </h3>
+                      <div className={`status-pill status-${searchResults[tabId].status}`}>
+                        {searchResults[tabId].statusText}
+                      </div>
+                    </div>
+                    <div className="result-body">
+                      {searchResults[tabId].items.map((item, index) => (
+                        <div key={index} className="result-item">
+                          <h4>{item.title}</h4>
+                          <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* AI Assessment Summary */}
+            <div className="form-section">
+              <h2>AI Assessment Summary</h2>
+              <p>I've thoroughly analyzed all search results and can confirm that no critical issues were identified that would prevent the property transaction from proceeding. There are two minor concerns:</p>
+              
+              <ol style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }}>
+                <li style={{ marginBottom: '0.5rem' }}>A planned traffic calming scheme on Willow Avenue scheduled for 2026. This is unlikely to significantly impact the property value and may improve road safety in the long term.</li>
+                <li style={{ marginBottom: '0.5rem' }}>Low surface water flood risk (once every 75-100 years). This is common in many London properties and isn't severe enough to affect insurability or require special measures.</li>
+              </ol>
+              
+              <p>Overall, these search results are favorable and indicate the property is suitable for purchase. I recommend proceeding to the next stage of preparing the legal documents for your transaction.</p>
+            </div>
+            
+            <div className="btn-container">
+              <button type="button" onClick={handleBack} className="btn btn-secondary">Back to Searches</button>
+              <button type="button" onClick={handleProceed} className="btn">Proceed to Document Preparation</button>
             </div>
           </div>
         </div>
+        
+        {/* Sidebar with AI Assistant */}
+        <div className="sidebar">
+          <AIAssistant 
+            message={assistantMessage}
+            tips={assistantTips}
+          />
+        </div>
       </div>
-
-      <footer>
-        <p>&copy; 2025 Search First AI. All rights reserved.</p>
-      </footer>
-    </>
+    </MainLayout>
   );
 };
 

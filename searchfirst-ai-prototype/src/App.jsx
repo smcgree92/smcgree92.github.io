@@ -1,14 +1,18 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './styles.css';
 
-// Import pages
+// Import app pages
 import SignupPage from './pages/SignupPage';
 import AIIntroductionPage from './pages/AIIntroductionPage';
 import PropertyDetailsPage from './pages/PropertyDetailsPage';
 import SearchAuthorizationPage from './pages/SearchAuthorizationPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import DocumentPreparationPage from './pages/DocumentPreparationPage';
+
+// Import main site pages
+import HomePage from './pages/MainSite/HomePage';
+import PrototypePlanPage from './pages/MainSite/PrototypePlanPage';
 
 // Add a navigation context for the main site
 export const MainSiteNavContext = React.createContext();
@@ -17,7 +21,7 @@ export const MainSiteNavContext = React.createContext();
 export const MainSiteNavProvider = ({ children }) => {
   // Function to navigate back to main site
   const goToMainSite = () => {
-    // Navigate to main site root
+    // Navigate to main site root (adjust this URL as needed)
     window.location.href = '/';
   };
 
@@ -28,17 +32,36 @@ export const MainSiteNavProvider = ({ children }) => {
   );
 };
 
+// Define application routes with their paths and components
+const routes = [
+  // Main site routes
+  { path: '/', element: <HomePage /> },
+  { path: '/main/prototype-plan', element: <PrototypePlanPage /> },
+  
+  // App routes
+  { path: '/app', element: <SignupPage /> },
+  { path: '/app/ai-introduction', element: <AIIntroductionPage /> },
+  { path: '/app/property-details', element: <PropertyDetailsPage /> },
+  { path: '/app/search-authorization', element: <SearchAuthorizationPage /> },
+  { path: '/app/search-results', element: <SearchResultsPage /> },
+  { path: '/app/document-preparation', element: <DocumentPreparationPage /> },
+  
+  // Redirect any unknown routes to home
+  { path: '*', element: <Navigate to="/" replace /> } 
+];
+
 function App() {
   return (
     <Router>
       <MainSiteNavProvider>
         <Routes>
-          <Route path="/" element={<SignupPage />} />
-          <Route path="/ai-introduction" element={<AIIntroductionPage />} />
-          <Route path="/property-details" element={<PropertyDetailsPage />} />
-          <Route path="/search-authorization" element={<SearchAuthorizationPage />} />
-          <Route path="/search-results" element={<SearchResultsPage />} />
-          <Route path="/document-preparation" element={<DocumentPreparationPage />} />
+          {routes.map((route) => (
+            <Route 
+              key={route.path}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
         </Routes>
       </MainSiteNavProvider>
     </Router>
