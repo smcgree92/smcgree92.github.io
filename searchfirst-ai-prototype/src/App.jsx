@@ -29,8 +29,8 @@ export const MainSiteNavContext = React.createContext();
 export const MainSiteNavProvider = ({ children }) => {
   // Function to navigate back to main site
   const goToMainSite = () => {
-    // Navigate to main site root (adjust this URL as needed)
-    window.location.href = '/';
+    // Navigate to main site root using HashRouter format
+    window.location.href = '/#/';
   };
 
   return (
