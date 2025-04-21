@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/searchfirst-ai-prototype/static/css/main.e89ef654.css",
-    "main.js": "/searchfirst-ai-prototype/static/js/main.4b96d1f5.js",
+    "main.css": "/searchfirst-ai-prototype/static/css/main.a2629ae1.css",
+    "main.js": "/searchfirst-ai-prototype/static/js/main.4c918da0.js",
     "index.html": "/searchfirst-ai-prototype/index.html",
-    "main.e89ef654.css.map": "/searchfirst-ai-prototype/static/css/main.e89ef654.css.map",
-    "main.4b96d1f5.js.map": "/searchfirst-ai-prototype/static/js/main.4b96d1f5.js.map"
+    "main.a2629ae1.css.map": "/searchfirst-ai-prototype/static/css/main.a2629ae1.css.map",
+    "main.4c918da0.js.map": "/searchfirst-ai-prototype/static/js/main.4c918da0.js.map"
   },
   "entrypoints": [
-    "static/css/main.e89ef654.css",
-    "static/js/main.4b96d1f5.js"
+    "static/css/main.a2629ae1.css",
+    "static/js/main.4c918da0.js"
   ]
 }

@@ -4,10 +4,10 @@
   "private": true,
   "homepage": "https://smcgree92.github.io/searchfirst-ai-prototype",
   "dependencies": {
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "prop-types": "^15.8.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
@@ -29,5 +29,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
